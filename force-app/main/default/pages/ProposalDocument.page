@@ -1,0 +1,73 @@
+<apex:page standardController="Opportunity" showQuickActionVfHeader="false" extensions="ProposalDocumentController" renderAs="pdf" action="{!getResourceList}">
+
+<!--apex:stylesheet value="{!URLFOR($Resource.Styles,'pdf.css')}"/-->
+
+<h1>Welcome to Universal Samples!</h1>
+
+<p>Thank you, <b><apex:outputText value=" {!Opportunity.Name}"/></b>, for 
+   becoming a new Opportunity with Universal Samples.</p>
+    
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Total Price</th>
+                <th>List Price</th>
+                <th>Unit Price</th>
+            </tr>
+        </thead>
+        <tbody id="table_body">
+            <apex:repeat value="{!results}" var="string" id="theRepeat">
+                <tr id="table_body_row">
+                    <td>{!string.Name}</td>
+                    <td>{!string.TotalPrice}</td> 
+                    <td>{!string.ListPrice}</td>
+                    <td>{!string.UnitPrice}</td>
+                </tr>
+            </apex:repeat>
+            
+        </tbody>
+    </table>
+    
+    <!--apex:form>
+        
+        <apex:commandButton styleclass="slds-button slds-button_brand" value="Download " action="{!getProcessing}" /> 
+    </apex:form-->
+
+
+    <!--apex:repeat value="{!results}" var="string" id="theRepeat">
+        <apex:outputText value="{!string}" id="theValue"/><br/>
+    </apex:repeat-->
+    <!--div id="dvTable"></div-->
+    <!--apex:pageBlock>
+        <apex:pageBlockTable value="{!results}" var="prd">
+            <apex:column value="{!prd.Name}"/>
+            <apex:column value="{!prd.TotalPrice}"/>
+            <apex:column value="{!prd.ListPrice}"/>
+            <apex:column value="{!prd.UnitPrice}"/>
+            <apex:column value="{!prd.Quantity}"/>
+            <apex:column value="{!prd.OpportunityId}"/>
+            <apex:column value="{!prd.Product2Id}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock-->
+    
+<!--p>Your account details are:</p>
+
+<table>
+<tr><th>Account Name</th>
+    <td><apex:outputText value="{!Account.Name}"/></td>
+    </tr>
+<tr><th>Account Rep</th>
+    <td><apex:outputText value="{!Account.Owner.Name}"/></td>
+    </tr>
+<tr><th>Customer Since</th>
+    <td><apex:outputText value="{0,date,long}">
+        <apex:param value="{!Account.CreatedDate}"/>
+        </apex:outputText></td>
+    </tr>
+</table-->
+    
+    <script>
+   
+    </script>
+</apex:page>

@@ -1,0 +1,63 @@
+<template>
+    <template if:true={prev}>
+        <lightning-icon icon-name="utility:chevronleft" onclick={handlePrev} style="cursor: pointer;" size="small" title="Back"></lightning-icon>
+    </template>
+    <lightning-card title={folder}>
+        <label class="slds-p-bottom_large slds-checkbox_toggle slds-grid">
+            <span class="slds-form-element__label slds-m-bottom_none">List</span>
+            <input onchange={handleToggle} type="checkbox" name="checkbox-toggle-15" value="checkbox-toggle-15" aria-describedby="checkbox-toggle-15" />
+            <span id="checkbox-toggle-15" class="slds-checkbox_faux_container" aria-live="assertive">
+            <span class="slds-checkbox_faux"></span>
+            </span>
+        </label>
+        <lightning-button label="Refresh" onclick={handleRefresh} slot="actions"></lightning-button>
+        <template if:true={spin} >
+            <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+        </template>
+        <template if:true={showFileName}>
+            <template if:false={list}>
+                <lightning-layout multiple-rows="true">
+                    <template for:each={currentFolder} for:item="file" for:index="idx">
+                        <lightning-layout-item style="text-align: center; padding-bottom: 4%;" size="3" key={file.Id}>
+                            <template if:true={file.isFolder}>
+                                <lightning-icon icon-name="standard:folder" data-idx={idx} onclick={handleAdd} style="cursor: pointer;" size="large" title={file.Name}></lightning-icon>
+                                <p style="text-align: center;">
+                                    <a style="margin-left: 1%; font-size: 13px;" target="_blank" href={file.Link}>{file.Name}</a>
+                                </p>
+                            </template>
+                            <template if:false={file.isFolder}>
+                                <lightning-icon icon-name="standard:document" size="large" title={file.Name}></lightning-icon>
+                                <p style="text-align: center;">
+                                    <a style="margin-left: 1%; font-size: 13px;" target="_blank" href={file.Link}>{file.Name}</a>
+                                </p>
+                            </template>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </template>
+            <template if:true={list}>
+                <lightning-layout multiple-rows="true">
+                    <template for:each={currentFolder} for:item="file" for:index="idx">
+                        <lightning-layout-item style="padding-bottom: 4%;" size="12" key={file.Id}>
+                            <template if:true={file.isFolder}>
+                                <span style="text-align: center;">
+                                    <lightning-icon icon-name="standard:folder" data-idx={idx} onclick={handleAdd} style="cursor: pointer;" size="small" title={file.Name}></lightning-icon>
+                                    <a style="margin-left: 0.5%; font-size: 13px;" target="_blank" href={file.Link}>{file.Name}</a>
+                                </span>
+                            </template>
+                            <template if:false={file.isFolder}>
+                                <lightning-icon icon-name="standard:document" size="small" title={file.Name}></lightning-icon>
+                                <a style="margin-left: 0.5%; font-size: 13px;" target="_blank" href={file.Link}>{file.Name}</a>
+                            </template>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </template>
+        </template>
+        <template if:false={showFileName}>
+            <div style="text-align: center; font-size:17px;">
+                <b >There are no files</b>
+            </div>
+        </template>
+    </lightning-card>    
+</template>

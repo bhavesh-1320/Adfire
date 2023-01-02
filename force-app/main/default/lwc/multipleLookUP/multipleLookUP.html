@@ -1,0 +1,49 @@
+<template>
+    <lightning-card>
+        <div>
+            <div class="slds-form-element">
+                
+                <div class="slds-form-element__control">
+                    <div class="slds-combobox_container">
+                        
+                        <div class={txtclassname} data-id="resultBox" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                            <div class="slds-form-element__control" role="none">
+                                <lightning-input required={required} data-id="userinput" label={Label} name="searchText" onchange={searchField} class="leftspace"></lightning-input>
+                            </div>
+                            <div class="slds-form-element__control " role="none">
+                                <template for:each={selectedRecords} for:item="serecord">
+                                    <span key={serecord.recId}>
+                                    <lightning-pill label={serecord.recName} name={serecord.recId} onremove={removeRecord}>
+                                            </lightning-pill>
+                                    </span>
+                                </template>
+                            </div>
+                        
+                            <!-- Second part display result -->
+                            <div id="listbox-id-1" class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid" role="listbox">
+                                <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                    <template for:each={searchRecords} for:item="serecord">
+                                        <li role="presentation" class="slds-listbox__item" key={serecord.recId}>
+                                            
+                                            <div data-id={serecord.recId} data-name={serecord.recName} onclick={setSelectedRecord} class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                                                <span class="slds-media__body">
+                                                    <span class="slds-listbox__option-text slds-listbox__option-text_entity">{serecord.recName}</span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </div>
+                            <div if:true={messageFlag}>
+                                No result found.
+                            </div>
+                            <div if:true={LoadingText}>
+                                Loading...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>

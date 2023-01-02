@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Proposal_Invoice__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Proposal Invoice</label>
+    <referenceTo>Proposal_Invoice__c</referenceTo>
+    <relationshipLabel>Proposal Line Items</relationshipLabel>
+    <relationshipName>Proposal_Line_Items</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

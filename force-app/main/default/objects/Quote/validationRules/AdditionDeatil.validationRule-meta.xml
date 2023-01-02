@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AdditionDeatil</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF( Audience_Type__c  =  &quot;Consumer&quot; &amp;&amp;  ISBLANK( Additional_Consumer_Audeince_Details__c ),true,false)</errorConditionFormula>
+    <errorDisplayField>Additional_Consumer_Audeince_Details__c</errorDisplayField>
+    <errorMessage>Please fill additional details.</errorMessage>
+</ValidationRule>

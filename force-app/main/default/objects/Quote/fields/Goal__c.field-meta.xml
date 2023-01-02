@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Goal__c</fullName>
+    <externalId>false</externalId>
+    <label>Goal</label>
+    <required>false</required>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Conversions</fullName>
+                <default>false</default>
+                <label>Conversions</label>
+            </value>
+            <value>
+                <fullName>Email Open Rate (OR)</fullName>
+                <default>false</default>
+                <label>Email Open Rate (OR)</label>
+            </value>
+            <value>
+                <fullName>Email Click Rate (CR)</fullName>
+                <default>false</default>
+                <label>Email Click Rate (CR)</label>
+            </value>
+            <value>
+                <fullName>Email Click to Open Rate (CTOR)</fullName>
+                <default>false</default>
+                <label>Email Click to Open Rate (CTOR)</label>
+            </value>
+            <value>
+                <fullName>Landing Page Impressions</fullName>
+                <default>false</default>
+                <label>Landing Page Impressions</label>
+            </value>
+            <value>
+                <fullName>Google Search CTR</fullName>
+                <default>false</default>
+                <label>Google Search CTR</label>
+            </value>
+            <value>
+                <fullName>Google Search Impressions</fullName>
+                <default>false</default>
+                <label>Google Search Impressions</label>
+            </value>
+            <value>
+                <fullName>CPC per channel</fullName>
+                <default>false</default>
+                <label>CPC per channel</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

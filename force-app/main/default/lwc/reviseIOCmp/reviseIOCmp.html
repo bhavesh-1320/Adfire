@@ -1,0 +1,84 @@
+<template>
+    <template if:true={showSpinner}>
+        <lightning-spinner class="slds-is-fixed" alternative-text="Loading" size="large"></lightning-spinner>
+    </template>
+    <lightning-card style="width: 97%; margin-left: 2%;">
+        <p class="slds-p-horizontal_xxx-small">
+            <lightning-input label="Flight Start Date" required="true" onchange={handleStartDate} type="Datetime"></lightning-input>
+        </p>
+        <p class="slds-p-horizontal_xxx-small">
+            <lightning-input label="Flight End Date" required="true" onchange={handleEndDate} type="Datetime"></lightning-input>
+        </p>
+        <p class="slds-p-horizontal_xxx-small" style="padding: 1%; background-color: gainsboro; padding-bottom: 1%; margin-top: 2%; font-weight: bold;">Select Products</p>
+        <p class="slds-p-horizontal_xxx-small" style="margin-top: 3%;">
+            <!-- <lightning-datatable data={oppProds} onsave={handleSave} 
+                selected-rows={preSelectPids}
+                draft-values={draftValues}
+                key-field="Id" 
+                columns={oppCols}></lightning-datatable> -->
+                <lightning-layout multiple-rows="true">
+                    <template for:each={oppProds} for:item="oppProd" for:index="idx">
+                        <lightning-layout-item style="padding-right: 4%;" key={oppProd} size="3">
+                            <div class="slds-combobox_container">
+                                <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open" aria-expanded="true" aria-haspopup="listbox" role="combobox">
+                                    <!-- Search Input -->
+                                    <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                                        <lightning-input data-idx={idx} label="Product" required="true" disabled={disabled} class="inputBox" placeholder="Select an Option" onblur={blurEvent} onclick={showOptions} onkeyup={filterOptions} value={oppProd.ProductName} auto-complete="off" id="combobox-id-1" ></lightning-input>
+                                        <lightning-icon style="margin-top: 2.5%;" class="slds-input__icon" icon-name="utility:down" size="x-small" alternative-text="search"></lightning-icon>
+                                    </div>
+                                    <!-- Dropdown List -->
+                                    <template if:true={oppProd.showDropdown}>
+                                        <div id="listbox-id-1" style="min-width: 100%;" class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid"><!--style="{! 'max-height:' + (8 + (v.recordCount * 40)) + 'px' }""-->
+                                            <ul class="slds-listbox slds-listbox_vertical recordListBox" role="presentation">
+                                                <template if:false={message} >
+                                                    <template for:each={optionData} for:item="option">
+                                                        <template if:true={option.isVisible}>
+                                                            <li key={option.value} data-idx={idx} data-pname={option.label} data-id={option.value} onmousedown={selectItem} class="slds-listbox__item eachItem">
+                                                                <template if:true={option.selected}>
+                                                                    <lightning-icon icon-name="utility:check" size="x-small" alternative-text="icon" ></lightning-icon>
+                                                                </template>
+                                                                <span class="slds-media slds-listbox__option_entity verticalAlign slds-truncate">{option.label}</span>
+                                                            </li>
+                                                        </template>
+                                                    </template>
+                                                </template>
+                                                <template if:true={message} >
+                                                    <li class="slds-listbox__item">
+                                                        <span class="slds-media slds-listbox__option_entity verticalAlign slds-truncate">{message}</span>
+                                                    </li>
+                                                </template>
+                                            </ul>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+
+                        </lightning-layout-item>
+                        <lightning-layout-item style="padding-right: 4%;" key={oppProd} size="3">
+                            <lightning-input onchange={handleValueChangeP} data-api="UnitPrice" data-idx={idx} value={oppProd.UnitPrice} label="Budget"></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item style="padding-right: 4%;" key={oppProd} size="2">
+                            <lightning-input onchange={handleValueChangeP} data-api="Counts__c" data-idx={idx} value={oppProd.Counts__c} label="Count"></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item style="padding-right: 4%;" key={oppProd} size="3">
+                            <lightning-input onchange={handleValueChangeP} data-api="Monthly_Frequency__c" data-idx={idx} value={oppProd.Monthly_Frequency__c} label="Monthly Frequency"></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item key={oppProd} size="1">
+                            <template if:true={showDelete}>
+                                <lightning-icon data-idx={idx} onclick={handleRemoveProducts} class="slds-input__icon" style="margin-top: 40%; cursor: pointer;" icon-name="utility:delete" size="small" alternative-text="Remove Products"></lightning-icon>
+                            </template>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </p>        
+            <p style="margin-top: 4%; text-align: right; padding: 2% 0;">
+                <lightning-button onclick={handleAddProducts} label="Add Products" variant="Neutral"></lightning-button>
+            </p>
+    </lightning-card>
+    <!-- <footer>
+        <div class="modal-footer slds-modal__footer">
+            <lightning-button onclick={handleClose} style="padding-right: 3%;" label="Close" variant="Neutral"></lightning-button>
+            <lightning-button onclick={handleRevise} variant="brand" label="Revise"></lightning-button>
+        </div>
+    </footer> -->
+</template>

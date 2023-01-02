@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tertiary_KPI__c</fullName>
+    <externalId>false</externalId>
+    <label>Tertiary KPI</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>CPA</fullName>
+                <default>false</default>
+                <label>CPA</label>
+            </value>
+            <value>
+                <fullName>CPC</fullName>
+                <default>false</default>
+                <label>CPC</label>
+            </value>
+            <value>
+                <fullName>Clicks</fullName>
+                <default>false</default>
+                <label>Clicks</label>
+            </value>
+            <value>
+                <fullName>Reach/High Match</fullName>
+                <default>false</default>
+                <label>Reach/High Match</label>
+            </value>
+            <value>
+                <fullName>Deliver in FULL</fullName>
+                <default>false</default>
+                <label>Deliver in FULL</label>
+            </value>
+            <value>
+                <fullName>Video Completions</fullName>
+                <default>false</default>
+                <label>Video Completions</label>
+            </value>
+            <value>
+                <fullName>Audio Completions</fullName>
+                <default>false</default>
+                <label>Audio Completions</label>
+            </value>
+            <value>
+                <fullName>CTR - 0.15%</fullName>
+                <default>false</default>
+                <label>CTR - 0.15%</label>
+            </value>
+            <value>
+                <fullName>Time Spent/Bounce Rate/Pageviews</fullName>
+                <default>false</default>
+                <label>Time Spent/Bounce Rate/Pageviews</label>
+            </value>
+            <value>
+                <fullName>CTR + Viewability</fullName>
+                <default>false</default>
+                <label>CTR + Viewability</label>
+            </value>
+            <value>
+                <fullName>CPA + CTR</fullName>
+                <default>false</default>
+                <label>CPA + CTR</label>
+            </value>
+            <value>
+                <fullName>CTR + Reach</fullName>
+                <default>false</default>
+                <label>CTR + Reach</label>
+            </value>
+            <value>
+                <fullName>CTR/Landing Page</fullName>
+                <default>false</default>
+                <label>CTR/Landing Page</label>
+            </value>
+            <value>
+                <fullName>CPC + Reach/Match Rates</fullName>
+                <default>false</default>
+                <label>CPC + Reach/Match Rates</label>
+            </value>
+            <value>
+                <fullName>Views - Landing Page</fullName>
+                <default>false</default>
+                <label>Views - Landing Page</label>
+            </value>
+            <value>
+                <fullName>CTR + Deliverability</fullName>
+                <default>false</default>
+                <label>CTR + Deliverability</label>
+            </value>
+            <value>
+                <fullName>CTR</fullName>
+                <default>false</default>
+                <label>CTR</label>
+            </value>
+            <value>
+                <fullName>CPC + CPA</fullName>
+                <default>false</default>
+                <label>CPC + CPA</label>
+            </value>
+            <value>
+                <fullName>CPA + CPL</fullName>
+                <default>false</default>
+                <label>CPA + CPL</label>
+            </value>
+            <value>
+                <fullName>VCR</fullName>
+                <default>false</default>
+                <label>VCR</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

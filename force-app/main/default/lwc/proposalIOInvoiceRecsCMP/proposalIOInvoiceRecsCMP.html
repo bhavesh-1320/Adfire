@@ -1,0 +1,344 @@
+<template>
+    <lightning-card style="font-size: 17px;">
+        <template if:true={spin}>
+            <lightning-spinner class="slds-is-fixed" alternative-text="Loading" size="large"></lightning-spinner>
+        </template>
+<div class="slds-grid slds-wrap frame" style="background:white; height:30rem; overflow: scroll;">
+
+    <lightning-layout style="width: 100%;" multiple-rows="true">
+        <div style="position: sticky; top: 0; z-index: 1;" class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1">
+            <!-- <div class="dashboardHead">
+                    </div> -->
+            <!-- <h1 class="h1Dashboard">Dashboard</h1> -->
+            <lightning-layout-item size="12">
+                <lightning-layout multiple-rows="true">
+                    <!-- <lightning-layout-item size="2" style="background-color: gainsboro; padding: 1.3% 0; text-align: center; font-weight: bold;">
+                            <p>Flight Start Date</p>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="2" style="background-color: gainsboro; padding: 1.3% 0; text-align: center; font-weight: bold;">
+                                <p>Flight End Date</p>
+                            </lightning-layout-item> -->
+                    <lightning-layout-item size="3" style="background-color: gainsboro; padding: 1.3% 0; text-align: center; font-weight: bold;">
+                        <p>Flights</p>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="2" style="background-color: gainsboro; padding: 1.3% 0; text-align: center; font-weight: bold;">
+                        <p>Data Source</p>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="1" style="background-color: gainsboro; padding: 1.3% 0; text-align: center; font-weight: bold;">
+                        <p>Budget</p>
+                    </lightning-layout-item>
+                    <!-- <lightning-layout-item size="1" style="background-color: gainsboro; padding: 1.3% 0; text-align: center; font-weight: bold;">
+                                <p>Counts</p>
+                            </lightning-layout-item> -->
+                    <lightning-layout-item size="1" style="background-color: gainsboro; padding: 1.3% 0; text-align: center; font-weight: bold;">
+                        <p>CPM</p>
+                    </lightning-layout-item>
+                    <!-- <lightning-layout-item size="1" style="font-size:12px; background-color: gainsboro; padding: 1.3% 0; text-align: center; font-weight: bold;">
+                                <p>Frequency</p>
+                            </lightning-layout-item> -->
+                    <lightning-layout-item size="2" style="background-color: gainsboro; padding: 1.3% 0; text-align: center; font-weight: bold;">
+                        <p>Impressions</p>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="1" style="background-color: gainsboro; padding: 1.3% 0; text-align: center; font-weight: bold;">
+                        <p>Campaign</p>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="2  " style="background-color: gainsboro; padding: 1.3% 0; text-align: center; font-weight: bold;">
+                        <p>Action</p>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-layout-item>
+        </div>
+        <template for:each={invoiceRecords} for:index="idx" for:item="invRec">
+                    <template if:true={showSeg}>
+                        <section key={invRec.Id} style="height: 500px;" role="dialog" tabindex="-1"
+                            aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1"
+                            class="slds-modal slds-fade-in-open">
+                            <div class="slds-modal__container">
+                                <!-- modal header start -->
+                                <header class="slds-modal__header">
+                                    <button
+                                        class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                        title="Close" onclick={hideModalBox}>
+                                        <lightning-icon icon-name="utility:close" alternative-text="close"
+                                            variant="inverse" size="small"></lightning-icon>
+                                        <span class="slds-assistive-text">Close</span>
+                                    </button>
+                                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Edit
+                                        Segment</h2>
+                                </header>
+
+                                <!-- modal body start -->
+                                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                                    <!-- Add or Remove Segment -->
+                                    <lightning-radio-group name="radioGroup" label="Select Operation"
+                                        onchange={handleEditSegChange} options={editSegOptions}
+                                        value={selectedSegOpValue} type="radio"></lightning-radio-group>
+
+                                    <lightning-combobox style="padding-bottom: 14%; margin-top:4%; width:50%;"
+                                        name="Segments" label="Select Segment" value={segValue}
+                                        placeholder="Select Segment" options={segmentOptions}
+                                        onchange={handleSegChange}></lightning-combobox>
+                                </div>
+
+                                <!-- modal footer start-->
+                                <footer class="slds-modal__footer">
+                                    <button class="slds-button slds-button_neutral"
+                                        onclick={hideModalBox}>Cancel</button>
+                                    <button data-idx={idx} class="slds-button slds-button_neutral"
+                                        onclick={hideAddSegmentToIOInv}>Edit Segment</button>
+                                </footer>
+
+                            </div>
+                        </section>
+                        <div key={invRec.Id} style="opacity: 0.5 Important;" class="slds-backdrop slds-backdrop_open">
+                        </div>
+                    </template>
+        <lightning-layout-item style="padding: 1%;" key={invRec.Id} size="12">
+            <p style="padding: 1%; font-weight: bold;">
+                <template if:false={invRec.NewCamp}>
+                                <lightning-icon data-idx={idx} onclick={handleShowLItems} size="x-small"
+                                    style="cursor: pointer;" icon-name={invRec.iconName}></lightning-icon>
+                                {invRec.CampName} - {invRec.SegName} - {invRec.Start_Date__c} - {invRec.End_Date__c}
+                            </template>
+                <!-- <template if:true={invR.NewCamp}>
+                                <lightning-layout>
+                                    <lightning-layout-item size="6">
+                                        <lightning-icon data-idx={idx1} onclick={handleShowLItems2} size="x-small" style="cursor: pointer;" icon-name={invR.iconName}></lightning-icon>
+                                            {invR.CampName} -
+                                    </lightning-layout-item>
+                                    <lightning-layout-item size="2" style="padding-right: 5%;">
+                                        <div>
+                                            <div class="slds-form-element">
+                                                <div class="slds-form-element__control">
+                                                    <div class="slds-combobox_container">
+                                                        <div class={invR.dynamiClassname} data-id="resultBox" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                                                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon slds-input-has-icon_left-right" role="none">
+                                                                <lightning-input style="margin-top: -17%;" value={invR.searchVal} data-id="userinput" label={Label} name="searchText" onchange={searchField} ></lightning-input>
+                                                                <span class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right iconheight">
+                                                                    <lightning-icon class="slds-icon slds-icon slds-icon_small slds-icon-text-default" icon-name="utility:search" size="x-small" alternative-text="icon" ></lightning-icon>
+                                                                </span>
+                                                            </div>
+                                                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon slds-input-has-icon_left-right" role="none">
+                                                                <template for:each={invR.selectedRecords} for:item="serecord">
+                                                                    <span key={serecord.recId}>
+                                                                    <lightning-pill label={serecord.recName} name={serecord.recId} data-idx={idx1} onremove={removeRecord}>
+                                                                            <lightning-icon icon-name="standard:account" variant="circle" alternative-text={serecord.recName}></lightning-icon>
+                                                                        </lightning-pill>
+                                                                    </span>
+                                                                </template>
+                                                            </div>
+                                                            Display Search result
+                                                            <div id="listbox-id-2" class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid" role="listbox">
+                                                                <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                                                    <template for:each={invR.searchRecords} for:item="serecord">
+                                                                        <li role="presentation" class="slds-listbox__item" key={serecord.recId}>
+                                
+                                                                            <div data-id={serecord.recId} data-idx={idx1} data-name={serecord.recName} onclick={setSelectedRecord} class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                                                                                <span class="slds-media__figure">
+                                                                                    <span class="slds-icon_container slds-icon-standard-account">
+                                                                                        <lightning-icon icon-name="standard:account" class="slds-icon slds-icon slds-icon_small slds-icon-text-default" size="x-small"></lightning-icon>
+                                                                                    </span>
+                                                                                </span>
+                                                                                <span class="slds-media__body">
+                                                                                    <span class="slds-listbox__option-text slds-listbox__option-text_entity">{serecord.recName}</span>
+                                                                                    <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">{objectName} • {serecord.recName}</span>
+                                                                                </span>
+                                                                            </div>
+                                                                        </li>
+                                                                    </template>
+                                                                </ul>
+                                                            </div>
+                                                            <div if:true={invR.messageFlag}>
+                                                                No result found.
+                                                            </div>
+                                                            <div if:true={invR.LoadingText}>
+                                                                Loading...
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item size="2" style="padding-right: 4%;">
+                                        - {invR.Flight}   
+                                        -&nbsp;&nbsp;&nbsp; <lightning-input onchange={handleCampDateChange} value={invR.StartD} data-idx={idx1} data-label="Start" style="margin-left: 8%; margin-top: -17%;" variant="label-hidden" type="date" name="input1" label="Start Date" ></lightning-input>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item style="padding-right: 4%;" size="2">
+                                        - &nbsp;&nbsp;&nbsp;<lightning-input onchange={handleCampDateChange} value={invR.EndD} data-idx={idx1} data-label="End" style="margin-left: 8%; margin-top: -17%;" type="date" variant="label-hidden" name="input1" label="End Date" ></lightning-input>
+                                    </lightning-layout-item>
+                                </lightning-layout> 
+                            </template> -->
+
+                <!-- <lightning-input data-idx={idx} data-field="Client_Campaign_Name__c" onchange={handleValueChange} style="display: inline-block; width: 15%;" value={invRec.Client_Campaign_Name__c}></lightning-input> -->
+            </p>
+        </lightning-layout-item>
+        <template if:true={invRec.showLItems}>
+
+                        <lightning-layout-item style="margin-left: 2%;" key={invRec.Id} size="3">
+                            <lightning-icon data-idx={idx} onclick={handleShowLItems2} size="x-small"
+                                style="cursor: pointer; float: left; margin-top: 25px;"
+                                icon-name={invRec.iconName2}></lightning-icon>
+                            <lightning-input type="Date" data-idx={idx} data-field="Start_Date__c"
+                                onchange={handleValueChange} style="width: 70%; float: left;"
+                                value={invRec.Start_Date__c}></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="3" key={invRec.Id}>
+                            <lightning-input type="Date" data-idx={idx} data-field="End_Date__c"
+                                onchange={handleValueChange} style="width: 70%;"
+                                value={invRec.End_Date__c}></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item key={invRec.Id} size="12">
+                            <template if:true={invRec.showLItemsInside}>
+                                <lightning-layout multiple-rows="true">
+                                    <template for:each={invRec.Proposal_Line_Items__r} for:index="idx2"
+                                        for:item="lItem">
+                                        <lightning-layout-item style="padding: 25px;" size="3" key={invRec.Id}>
+                                            <!--  -->
+                                            <template if:false={lItem.new}>
+                                                <a href={lItem.CampaignUrl}
+                                                    target="_blank">{invRec.CampName}-{lItem.SegmentsName}-{lItem.ProdName}</a>
+                                                <template if:true={lItem.showAddNewSeg}>
+                                                    <c-multiple-look-u-p idx={segNum} idx2={segNum2}
+                                                        selected-records={lItem.segmentIdMap}
+                                                        onselected={handleSelectEvent}></c-multiple-look-u-p>
+                                                </template>
+        </template>
+        <template if:true={lItem.new}>
+                                                <div key={lItem.Id} style="width: 90%;" class="slds-combobox_container">
+                                                    <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+                                                        aria-expanded="true" aria-haspopup="listbox" role="combobox">
+                                                        <!-- Search Input -->
+                                                        <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                                                            role="none">
+                                                            <!-- 
+                                                                    <lightning-input read-only="true" data-idx={idx} data-idx2={idx2} label="Product" variant="label-hidden" class="inputBox" placeholder="Select an Option" value={lItem.ProdName} auto-complete="off" ></lightning-input>
+                                                                </template> -->
+
+        <lightning-input data-idx={idx} data-idx2={idx2} label="Product" required="true" variant="label-hidden" class="inputBox" placeholder="Select an Option" onblur={blurEvent} onclick={showOptions} onkeyup={filterOptions} value={lItem.ProdName} auto-complete="off"
+            id="combobox-id-22"></lightning-input>
+        <lightning-icon style="margin-top: -2.5%;" class="slds-input__icon" icon-name="utility:down" size="x-small" alternative-text="search"></lightning-icon>
+</div>
+<!-- Dropdown List -->
+<template if:true={lItem.showDropdown}>
+                                                            <div id="listbox-id-1" style="min-width: 100%;"
+                                                                class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid">
+                                                                <!--style="{! 'max-height:' + (8 + (v.recordCount * 40)) + 'px' }""-->
+                                                                <ul class="slds-listbox slds-listbox_vertical recordListBox"
+                                                                    role="presentation">
+                                                                    <template if:false={message}>
+                                                                        <template for:each={optionData}
+                                                                            for:item="option">
+                                                                            <template if:true={option.isVisible}>
+                                                                                <li key={option.value} data-idx={idx}
+                                                                                    data-idx2={idx2}
+                                                                                    data-pname={option.label}
+                                                                                    data-id={option.value}
+                                                                                    onmousedown={selectItem}
+                                                                                    class="slds-listbox__item eachItem">
+                                                                                    <template if:true={option.selected}>
+                                                                                        <lightning-icon
+                                                                                            icon-name="utility:check"
+                                                                                            size="x-small"
+                                                                                            alternative-text="icon"></lightning-icon>
+                                                                                    </template>
+<span class="slds-media slds-listbox__option_entity verticalAlign slds-truncate">{option.label}</span>
+</li>
+</template>
+</template>
+</template>
+<template if:true={message}>
+                                                                        <li class="slds-listbox__item">
+                                                                            <span
+                                                                                class="slds-media slds-listbox__option_entity verticalAlign slds-truncate">{message}</span>
+                                                                        </li>
+                                                                    </template>
+</ul>
+</div>
+</template>
+</div>
+</div>
+<template if:true={lItem.showAddNewSeg}>
+                                                    <c-multiple-look-u-p idx={segNum} idx2={segNum2}
+                                                        selected-records={lItem.segmentIdMap}
+                                                        onselected={handleSelectEvent}></c-multiple-look-u-p>
+                                                </template>
+</template>
+</lightning-layout-item>
+
+<!-- Data Source  -->
+<lightning-layout-item class="slds-p-right_medium" size="2" style="padding-top: 22px;" key={invRec.Id}>
+    <lightning-combobox data-idx={idx} data-idx2={idx2} data-field="Data_Source__c" onchange={handleValueChange} value={lItem.Data_Source__c} variant="label-hidden" name="Data Source" label="Data Source" options={dataSourceOptions}>
+    </lightning-combobox>
+    <!-- <lightning-input-field value={dVal}></lightning-input-field> -->
+</lightning-layout-item>
+
+<lightning-layout-item class="slds-p-right_medium" size="1" style="text-align: center;" key={invRec.Id}>
+    <lightning-input data-idx={idx} data-idx2={idx2} data-field="UnitPrice" onchange={handleValueChange} style="margin:auto; padding-top: 8px;" value={lItem.UnitPrice}></lightning-input>
+</lightning-layout-item>
+<!-- <lightning-layout-item size="2" key={invRec.Id}>
+                                                <template if:true={showQuantity}>
+                                                    <lightning-input data-idx={idx}  data-idx2={idx2} data-field="Quantity" onchange={handleValueChange} style="width: 70%;" value={lItem.Quantity}></lightning-input>
+                                                </template>
+                                                <template if:false={showQuantity}>
+                                                    <lightning-input data-idx={idx}  data-idx2={idx2} data-field="Counts__c" onchange={handleValueChange} style="width: 70%;" value={lItem.Counts__c}></lightning-input>
+                                                </template>
+                                            </lightning-layout-item> -->
+<lightning-layout-item class="slds-p-right_medium" size="1" style="text-align: center;" key={invRec.Id}>
+    <lightning-input data-idx={idx} data-idx2={idx2} data-field="CPM__c" onchange={handleValueChange} style="margin:auto; padding-top: 8px;" value={lItem.CPM__c}></lightning-input>
+</lightning-layout-item>
+<!-- <lightning-layout-item size="1" key={invRec.Id}>
+                                                <lightning-input data-idx={idx}  data-idx2={idx2} data-field="Monthly_Frequency__c" onchange={handleValueChange} style="width: 70%;" value={lItem.Monthly_Frequency__c}></lightning-input>
+                                            </lightning-layout-item> -->
+<lightning-layout-item class="slds-p-right_medium" size="2" style="text-align: center;" key={invRec.Id}>
+    <lightning-input type="number" data-idx={idx} data-idx2={idx2} data-field="Impression__c" read-only="true" onchange={handleValueChange} style="margin:auto; text-align: center; padding-left:25%; padding-top: 6px; font-size: 17px;" value={lItem.Impression__c}></lightning-input>
+</lightning-layout-item>
+<!-- Campaign Ids -->
+<lightning-layout-item class="slds-p-right_medium slds-p-top_large" size="1" style="text-align: center; padding-top: 29px;" key={invRec.Id}>
+    <a href={lItem.CampaignUrl} target="_blank">{lItem.CampaignId}</a>
+</lightning-layout-item>
+<lightning-layout-item style="font-size:15px; padding-top: 19px; text-align: right;" size="2" key={invRec.Id}>
+    <!-- <template if:false={lItem.new}> -->
+    <template if:true={invRec.showDelete}>
+                                                <lightning-icon data-idx={idx} data-idx2={idx2}
+                                                    onclick={handleRemoveProducts}
+                                                    class="slds-input__icon slds-icon_small"
+                                                    style="padding-right: 20%; cursor: pointer;"
+                                                    icon-name="utility:delete" size="small"
+                                                    alternative-text="Remove Products"></lightning-icon>
+                                            </template>
+    <lightning-button style="font-size: 15px;" data-idx={idx} data-idx2={idx2} onclick={handleAddSegments} label="Edit Segments" variant="Neutral"></lightning-button>
+    <!-- </template> -->
+</lightning-layout-item>
+</template>
+
+<p style="padding: 2%;">
+    <lightning-button data-idx={idx} onclick={handleAddProducts} label="Add Products" variant="Neutral"></lightning-button>
+</p>
+</lightning-layout>
+</template>
+</lightning-layout-item>
+
+<!-- <template if:false={invR.search}>
+                            <div key={invR.Id} style="margin-top: 2%; margin-left: 2%; padding-bottom: 1%;">
+                                <lightning-button data-idx={idx1} label="Search Flights" value="Search Flights" onclick={handleSearchCmp}>Search Flights</lightning-button>
+                            </div>    
+                        </template> -->
+<!-- <div key={invRec.Id} style="margin-top: 2%; margin-left: 2%; padding-bottom: 1%;">
+                            <lightning-button data-idx={idx1} label="Add More Flights" value="Add More Flights" onclick={handleAddFlights}>Add More Flights</lightning-button>
+                        </div> -->
+</template>
+<!-- add segment cmp -->
+</template>
+</lightning-layout>
+<div style="margin-top: 2%; margin-left: 2%; padding-bottom: 1%;">
+    <lightning-button label="Add More Flights" value="Add More Flights" onclick={handleAddFlights}>Add More Flights
+    </lightning-button>
+</div>
+<div style="text-align: right; padding-bottom: 1%; width: 100%;">
+    <lightning-button variant="brand" label="Save" onclick={handleSave} value="Save">Save</lightning-button>
+</div>
+</div>
+
+</lightning-card>
+</template>

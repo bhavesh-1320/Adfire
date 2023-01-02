@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <logo>X1592317928334</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <label>Adfire Health</label>
+    <navType>Standard</navType>
+    <tabs>standard-home</tabs>
+    <tabs>standard-Account</tabs>
+    <tabs>standard-Contact</tabs>
+    <tabs>standard-Opportunity</tabs>
+    <tabs>standard-Lead</tabs>
+    <tabs>Board_Campaign__c</tabs>
+    <tabs>CampaignLineItem__c</tabs>
+    <tabs>ChangeRequest__c</tabs>
+    <tabs>standard-Contract</tabs>
+    <tabs>Invoice__c</tabs>
+    <tabs>Invoice_Line_Item__c</tabs>
+    <tabs>Proposal_Invoice__c</tabs>
+    <tabs>Segment__c</tabs>
+    <tabs>Opportunity_Segment__c</tabs>
+    <tabs>Audience__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>SF_UtilityBar</utilityBar>
+</CustomApplication>

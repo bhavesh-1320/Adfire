@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Adfire_Marketing</fullName>
+    <active>true</active>
+    <label>Adfire Marketing</label>
+    <picklistValues>
+        <picklist>Creative_Service_Needed__c</picklist>
+        <values>
+            <fullName>Adfire Creating</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Both</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Client Providing</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Goal__c</picklist>
+        <values>
+            <fullName>CPC per channel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Conversions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email Click Rate %28CR%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email Click to Open Rate %28CTOR%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email Open Rate %28OR%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google Search CTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google Search Impressions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Landing Page Impressions</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Primary_KPI__c</picklist>
+        <values>
+            <fullName>Audio Completions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CPA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CPA %2B CPL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CPA %2B CTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CPC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CPC %2B CPA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CPC %2B Reach%2FMatch Rates</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CTR %2B Deliverability</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CTR %2B Reach</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CTR %2B Viewability</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CTR - 0%2E15%25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CTR%2FLanding Page</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Clicks</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Deliver in FULL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reach%2FHigh Match</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Time Spent%2FBounce Rate%2FPageviews</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VCR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Video Completions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Views - Landing Page</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Regional_Target__c</picklist>
+        <values>
+            <fullName>AK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AL</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Secondary_KPI__c</picklist>
+        <values>
+            <fullName>Audio Completions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CPA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CPA %2B CPL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CPA %2B CTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CPC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CPC %2B CPA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CPC %2B Reach%2FMatch Rates</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CTR %2B Deliverability</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CTR %2B Reach</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CTR %2B Viewability</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CTR - 0%2E15%25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CTR%2FLanding Page</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Clicks</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Deliver in FULL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reach%2FHigh Match</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Time Spent%2FBounce Rate%2FPageviews</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VCR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Video Completions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Views - Landing Page</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status</picklist>
+        <values>
+            <fullName>Accepted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Denied</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Progress</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Needs More Information</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Requested</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Sent</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Strategies_Products__c</picklist>
+        <values>
+            <fullName>1%3A1 Audio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 CTV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 Contextual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 Corp Health Endemic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 Cross Device</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 Endemic Sites</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 Expandable Rising Star</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 FB%26IG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 Facebook</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 Geofencing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 High Impact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 InApp</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 Instagram</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 LinkedIn</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 Native</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 Paid Search</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 Premium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 Retargeting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 Site Retargeting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 TikTok</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 Twitter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 Video</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 Web</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1 YouTube</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1%3A1-POC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Conference Package</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>None</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Target High Impact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Target at POC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Target on Audio %28Pandora%2FSpotify%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Target on CTV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Target on Contextual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Target on Cross Device%2C In-App%2C %2B Retargeting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Target on Digital OOH - Lamar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Target on Native</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Target on Video</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Target on on Premium Placements</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Target with Site Retargeting</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Target_Geo_Type__c</picklist>
+        <values>
+            <fullName>Country</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DMA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Radius</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>State</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Zip</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Tertiary_KPI__c</picklist>
+        <values>
+            <fullName>Audio Completions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CPA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CPA %2B CPL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CPA %2B CTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CPC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CPC %2B CPA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CPC %2B Reach%2FMatch Rates</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CTR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CTR %2B Deliverability</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CTR %2B Reach</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CTR %2B Viewability</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CTR - 0%2E15%25</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CTR%2FLanding Page</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Clicks</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Deliver in FULL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reach%2FHigh Match</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Time Spent%2FBounce Rate%2FPageviews</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VCR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Video Completions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Views - Landing Page</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Strategies_Products__c</fullName>
+    <externalId>false</externalId>
+    <label>Strategies/Products</label>
+    <required>false</required>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>1:1 Cross Device</fullName>
+                <default>false</default>
+                <label>1:1 Cross Device</label>
+            </value>
+            <value>
+                <fullName>1:1 InApp</fullName>
+                <default>false</default>
+                <label>1:1 InApp</label>
+            </value>
+            <value>
+                <fullName>1:1 Web</fullName>
+                <default>false</default>
+                <label>1:1 Web</label>
+            </value>
+            <value>
+                <fullName>1:1 Retargeting</fullName>
+                <default>false</default>
+                <label>1:1 Retargeting</label>
+            </value>
+            <value>
+                <fullName>1:1 Site Retargeting</fullName>
+                <default>false</default>
+                <label>1:1 Site Retargeting</label>
+            </value>
+            <value>
+                <fullName>1:1 High Impact</fullName>
+                <default>false</default>
+                <label>1:1 High Impact</label>
+            </value>
+            <value>
+                <fullName>1:1-POC</fullName>
+                <default>false</default>
+                <label>1:1-POC</label>
+            </value>
+            <value>
+                <fullName>1:1 Contextual</fullName>
+                <default>false</default>
+                <label>1:1 Contextual</label>
+            </value>
+            <value>
+                <fullName>1:1 Endemic Sites</fullName>
+                <default>false</default>
+                <label>1:1 Endemic Sites</label>
+            </value>
+            <value>
+                <fullName>1:1 Premium</fullName>
+                <default>false</default>
+                <label>1:1 Premium</label>
+            </value>
+            <value>
+                <fullName>1:1 Corp Health Endemic</fullName>
+                <default>false</default>
+                <label>1:1 Corp Health Endemic</label>
+            </value>
+            <value>
+                <fullName>1:1 YouTube</fullName>
+                <default>false</default>
+                <label>1:1 YouTube</label>
+            </value>
+            <value>
+                <fullName>1:1 CTV</fullName>
+                <default>false</default>
+                <label>1:1 CTV</label>
+            </value>
+            <value>
+                <fullName>1:1 Video</fullName>
+                <default>false</default>
+                <label>1:1 Video</label>
+            </value>
+            <value>
+                <fullName>1:1 Native</fullName>
+                <default>false</default>
+                <label>1:1 Native</label>
+            </value>
+            <value>
+                <fullName>1:1 LinkedIn</fullName>
+                <default>false</default>
+                <label>1:1 LinkedIn</label>
+            </value>
+            <value>
+                <fullName>1:1 Paid Search</fullName>
+                <default>false</default>
+                <label>1:1 Paid Search</label>
+            </value>
+            <value>
+                <fullName>1:1 FB&amp;IG</fullName>
+                <default>false</default>
+                <label>1:1 FB&amp;IG</label>
+            </value>
+            <value>
+                <fullName>1:1 Twitter</fullName>
+                <default>false</default>
+                <label>1:1 Twitter</label>
+            </value>
+            <value>
+                <fullName>1:1 TikTok</fullName>
+                <default>false</default>
+                <label>1:1 TikTok</label>
+            </value>
+            <value>
+                <fullName>1:1 Audio</fullName>
+                <default>false</default>
+                <label>1:1 Audio</label>
+            </value>
+            <value>
+                <fullName>1:1 Expandable Rising Star</fullName>
+                <default>false</default>
+                <label>1:1 Expandable Rising Star</label>
+            </value>
+            <value>
+                <fullName>1:1 Email</fullName>
+                <default>false</default>
+                <label>1:1 Email</label>
+            </value>
+            <value>
+                <fullName>1:1 Geofencing</fullName>
+                <default>false</default>
+                <label>1:1 Geofencing</label>
+            </value>
+            <value>
+                <fullName>Conference Package</fullName>
+                <default>false</default>
+                <label>Conference Package</label>
+            </value>
+            <value>
+                <fullName>None</fullName>
+                <default>false</default>
+                <label>None</label>
+            </value>
+            <value>
+                <fullName>1:1 Facebook</fullName>
+                <default>false</default>
+                <label>1:1 Facebook</label>
+            </value>
+            <value>
+                <fullName>1:1 Instagram</fullName>
+                <default>false</default>
+                <label>1:1 Instagram</label>
+            </value>
+            <value>
+                <fullName>Target on Cross Device, In-App, + Retargeting</fullName>
+                <default>false</default>
+                <label>Target on Cross Device, In-App, + Retargeting</label>
+            </value>
+            <value>
+                <fullName>Target with Site Retargeting</fullName>
+                <default>false</default>
+                <label>Target with Site Retargeting</label>
+            </value>
+            <value>
+                <fullName>Target High Impact</fullName>
+                <default>false</default>
+                <label>Target High Impact</label>
+            </value>
+            <value>
+                <fullName>Target at POC</fullName>
+                <default>false</default>
+                <label>Target at POC</label>
+            </value>
+            <value>
+                <fullName>Target on Contextual</fullName>
+                <default>false</default>
+                <label>Target on Contextual</label>
+            </value>
+            <value>
+                <fullName>Target on Native</fullName>
+                <default>false</default>
+                <label>Target on Native</label>
+            </value>
+            <value>
+                <fullName>Target on on Premium Placements</fullName>
+                <default>false</default>
+                <label>Target on on Premium Placements</label>
+            </value>
+            <value>
+                <fullName>Target on Audio (Pandora/Spotify)</fullName>
+                <default>false</default>
+                <label>Target on Audio (Pandora/Spotify)</label>
+            </value>
+            <value>
+                <fullName>Target on Video</fullName>
+                <default>false</default>
+                <label>Target on Video</label>
+            </value>
+            <value>
+                <fullName>Target on CTV</fullName>
+                <default>false</default>
+                <label>Target on CTV</label>
+            </value>
+            <value>
+                <fullName>Target on Digital OOH - Lamar</fullName>
+                <default>false</default>
+                <label>Target on Digital OOH - Lamar</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

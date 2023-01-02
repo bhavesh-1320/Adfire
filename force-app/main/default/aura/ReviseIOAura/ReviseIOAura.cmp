@@ -1,0 +1,107 @@
+<!-- <aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" access="global" >  
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:html tag="style">
+        .cuf-content {
+        padding: 0 0rem !important;
+        }
+        .slds-p-around_medium{
+        padding: 0rem !important;
+        }
+        .slds-p-around-medium {
+            padding: 0rem !important;
+        }
+        .slds-modal__content{
+            height:unset !important;
+            max-height:unset !important;
+        }
+        .slds-modal__container{
+            max-width: 45rem !important;
+            width:45% !important;
+        }
+        .slds-card__body{
+            width: 97% !important;
+            margin-left: 2% !important;
+        }
+        </aura:html>
+        <div style="width: 97%; margin-left: 2%;" class="modal-header slds-modal__header slds-size_1-of-1">
+            <h4 class="slds-text-heading-small">Revise IO</h4>
+        </div>
+            <c:reviseIOCmp aura:id="lWCComponent2" recId = "{!v.recordId}"></c:reviseIOCmp>                   
+</aura:component>-->
+
+<aura:component  implements="force:lightningQuickActionWithoutHeader,force:hasRecordId,force:hasSObjectName,flexipage:availableForAllPageTypes,force:appHostable" access="global" >
+    
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:html tag="style">
+        .cuf-content {
+            padding: 0 0rem !important;
+            }
+            .slds-p-around--medium {
+            padding: 0rem !important;
+            }       
+            .slds-modal__content{
+            overflow: visible!important;
+            overflow-y:visible!important;
+            height:unset !important;
+            max-height:unset !important;
+            }
+            /* Extra small devices (phones, 600px and down) */
+            @media only screen and (max-width: 600px) {
+            .showFooter {
+            height:50px;
+            }
+            }
+            
+            /* Small devices (portrait tablets and large phones, 600px and up) */
+            @media only screen and (min-width: 600px) {
+            .showFooter {
+            height:100px;
+            }
+            }
+            
+            /* Medium devices (landscape tablets, 768px and up) */
+            @media only screen and (min-width: 768px) {
+            .showFooter {
+            height:200px;
+            }
+            } 
+            
+            /* Large devices (laptops/desktops, 992px and up) */
+            @media only screen and (min-width: 992px) {
+            .showFooter {
+            height:300px;
+            }
+            } 
+            
+            /* Extra large devices (large laptops and desktops, 1200px and up) */
+            @media only screen and (min-width: 1200px) {
+            .showFooter {
+            height:400px;
+            }
+        }
+    </aura:html>
+            <div class="modal-header slds-modal__header slds-size_1-of-1">
+                <h4 class="title slds-text-heading--medium">Revise IO</h4>
+            </div>
+            <!--End Modal Header-->  
+            <!--Modal Body-->  
+            <div class="showFooter slds-scrollable_y callLeadInqCmpTwo">
+                <div class="slds-p-around--x-small slds-align_absolute-left slds-size_1-of-1 slds-is-relative">
+                    
+                    <!--lightning:messages /-->
+                    <div>
+                        <div class="lgc-bg">
+                            <!-- Modal/Popup Box Header Starts here-->
+                            <!--section header-->
+                            <c:reviseIOCmp aura:id="lWCComponent2" recId = "{!v.recordId}"></c:reviseIOCmp>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer slds-modal__footer slds-size_1-of-1">
+                <lightning:button variant="Neutral" class="slds-button" label="Cancel" onclick="{!c.closeModal}"/>
+                <lightning:button variant="Brand" class="slds-button" label="Revise" onclick="{!c.revise}"/>
+            </div>   
+        <lightning:navigation aura:id="navService"/>
+
+</aura:component>

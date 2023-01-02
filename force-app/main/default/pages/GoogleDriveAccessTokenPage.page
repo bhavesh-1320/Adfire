@@ -1,0 +1,5 @@
+<apex:page controller="GoogleDriveAccessToken" action="{!getAccessToken}">
+    <apex:form >
+    	<apex:commandButton value="Get Access Token" action="{!getAuthCode}" />
+    </apex:form>
+</apex:page>

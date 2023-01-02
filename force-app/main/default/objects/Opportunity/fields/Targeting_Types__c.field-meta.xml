@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Targeting_Types__c</fullName>
+    <externalId>false</externalId>
+    <label>Targeting Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>POC</fullName>
+                <default>false</default>
+                <label>POC</label>
+            </value>
+            <value>
+                <fullName>Premium</fullName>
+                <default>false</default>
+                <label>Premium</label>
+            </value>
+            <value>
+                <fullName>Tablet</fullName>
+                <default>false</default>
+                <label>Tablet</label>
+            </value>
+            <value>
+                <fullName>Video</fullName>
+                <default>false</default>
+                <label>Video</label>
+            </value>
+            <value>
+                <fullName>Web</fullName>
+                <default>false</default>
+                <label>Web</label>
+            </value>
+            <value>
+                <fullName>BT</fullName>
+                <default>false</default>
+                <label>BT</label>
+            </value>
+            <value>
+                <fullName>CTV</fullName>
+                <default>false</default>
+                <label>CTV</label>
+            </value>
+            <value>
+                <fullName>Custom Content</fullName>
+                <default>false</default>
+                <label>Custom Content</label>
+            </value>
+            <value>
+                <fullName>DOOH</fullName>
+                <default>false</default>
+                <label>DOOH</label>
+            </value>
+            <value>
+                <fullName>Retargeting</fullName>
+                <default>false</default>
+                <label>Retargeting</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

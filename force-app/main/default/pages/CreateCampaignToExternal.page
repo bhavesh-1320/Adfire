@@ -1,0 +1,3 @@
+<!--Creating campaigns in iterable, monday.com and Trade desk-->
+<apex:page standardController="Contract" extensions="CreateCampaignToExt" action="{!createIterableCampaign}">
+</apex:page>

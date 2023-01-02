@@ -1,0 +1,43 @@
+<apex:page showHeader="false" standardController="Opportunity" extensions="Opp_RequestforProposal_class">
+    <apex:form id="frm">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+        
+     
+        <div class="container" id="mapDiv" >
+            <apex:detail subject="{!OpporId}" relatedlist="false"></apex:detail>
+        </div>
+        
+ 		        
+        <apex:actionFunction action="{!AddDocument}" name="AddDocument" rerender="frm">
+            <apex:param assignTo="{!strImageBlob}" name="imageBlob" value=""/>
+        </apex:actionFunction>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+        <script type='text/javascript' src='/canvas/sdk/js/publisher.js'></script>
+        <script type="text/javascript">
+            window.onload = function(){
+            html2canvas(document.body, 
+                        {
+                            useCORS: true,
+                            onrendered: function(canvas) 
+                            {
+                                document.body.appendChild(canvas);
+                                document.getElementById("mapDiv").style.display = 'none';
+                                AddDocument(document.getElementsByTagName('canvas')[0].toDataURL());
+                                setTimeout( ()=>{
+                                    	Sfdc.canvas.publisher.publish({ name: "publisher.close", payload:{ refresh: "true" }});
+                                    }, 4000);
+                                
+                            }
+                        });
+        }
+        
+        function callActionFunction()
+        {
+            AddDocument(document.getElementsByTagName('canvas')[0].toDataURL());
+        }
+        
+        </script>
+    </apex:form>  
+    <!--<button onclick="callActionFunction()">Capture</button>-->
+</apex:page>

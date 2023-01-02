@@ -1,0 +1,177 @@
+<template>
+    <span http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *;**script-src 'self' https://ww53743.europe-west4.gcp.snowflakecomputing.com 'unsafe-inline' 'unsafe-eval';** "></span>
+    <template if:true={spin}>
+        <lightning-spinner></lightning-spinner>
+    </template>
+    <p style="font-size: 14px; font-weight: bold; background: gainsboro; padding: 0.5% 1%;">Filter Records</p>
+    <lightning-layout style="padding-bottom: 2%;" multiple-rows="true">
+        <!-- <lightning-combobox name="StageName" label="Product Type" value={StageValue} options={OpportunityPicklist.data.values}></lightning-combobox> -->
+        <lightning-layout-item size="4" style="padding-right: 2%;">
+            <lightning-input onchange={handleComboChange} data-op="Location" 
+            placeholder="Enter Location" value={selectedLoc}></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="4" style="padding-right: 2%;">
+            <lightning-layout>
+                <lightning-layout-item size="4">
+                    <lightning-radio-group name="radioGroup" style="margin-top: 4%;" variant="label-hidden"
+                    label="label-hidden"
+                    options={minMilesOptions}
+                    value={minMilesValue}
+                    onchange={handleComboChange}
+                    data-op="MinMileRad"
+                    type="radio"></lightning-radio-group>
+                </lightning-layout-item>
+                <lightning-layout-item size="1">
+                </lightning-layout-item>
+                <lightning-layout-item size="3">
+                    <lightning-input onchange={handleComboChange} onblur={handleBlur} value={selectedStartMin} data-op="StartMin" placeholder="Start"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="1"><br><p style="padding: 21%;">to</p></lightning-layout-item>
+                <lightning-layout-item size="3">
+                    <lightning-input onchange={handleComboChange} onblur={handleBlur} value={selectedEndMin} data-op="EndMin" placeholder="End"></lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-layout-item>
+        <lightning-layout-item size="4" style="padding-right: 2%;">
+            
+        </lightning-layout-item>
+        <!--Second row-->
+        <lightning-layout-item size="4" style="padding-right: 2%;">
+            <lightning-combobox value={lType} data-op="LType" placeholder="Select License Type" onchange={handleComboChange} options={lTypeOptions}></lightning-combobox>
+        </lightning-layout-item>
+        <lightning-layout-item size="4" style="padding-right: 2%;">
+            <lightning-combobox value={practiceArea} data-op="PArea" placeholder="All Practice Areas" onchange={handleComboChange} options={practiceAreasOptions}></lightning-combobox>
+        </lightning-layout-item>
+        <lightning-layout-item size="4" style="padding-right: 2%;">
+            <label style="font-weight: bold; font-size: 12px;">Use Practice Area</label><br>
+            <template for:each={usePAreaOptions} for:item="item">
+                <fieldset key={item.value} style="display: block; float: left;">
+                    <div class="slds-form-element__control">
+                        <span class="slds-radio">
+                            <input name="radiogroup" id={item.value} type="radio" value={item.value}/>
+                            <label class="slds-radio__label" for={item.value}>
+                                <span class="slds-radio_faux"></span>
+                                <span class="slds-form-element__label">{item.label}</span>
+                            </label>
+                        </span>
+                    </div>
+                </fieldset>
+            </template>
+        </lightning-layout-item>
+        <!--Third row-->
+        <lightning-layout-item size="4" style="padding-right: 2%;">
+            <lightning-layout>
+                <lightning-layout-item size="5">
+                    <lightning-input onchange={handleComboChange} data-op="MinYear" value={selectedMinYear} placeholder="Min Years"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="2">
+                </lightning-layout-item>
+                <lightning-layout-item size="5">
+                    <lightning-input onchange={handleComboChange} data-op="MaxYear" value={selectedMaxYear} placeholder="Max Years"></lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-layout-item>
+        <lightning-layout-item size="4" style="padding-right: 2%;">
+            <lightning-layout>
+                <lightning-layout-item size="5">
+                    <lightning-combobox placeholder = "All States" value={selectedState} data-op="State" onchange={handleComboChange} options={stateOptions}></lightning-combobox>
+                </lightning-layout-item>
+                <lightning-layout-item size="1">
+                </lightning-layout-item>
+                <lightning-layout-item size="6">
+                    <br>
+                    <lightning-textarea rows="1" variant="label-hidden" onchange={handleComboChange} data-op="ZipCode" value={selectedZipCode} id="input-238" placeholder="Zip Code List" style="height: 35px;"></lightning-textarea>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-layout-item>
+        <lightning-layout-item size="4" style="padding-right: 2%;">
+            <lightning-combobox placeholder = "All Settings" value={selectedSetting} data-op="Settings" onchange={handleComboChange} options={settingsOptions}></lightning-combobox>
+        </lightning-layout-item>
+        <!--Fourth row-->
+        <lightning-layout-item size="4" style="padding-right: 2%;">
+            <lightning-combobox value={selectedAdd} data-op="Address" placeholder="Select Address" onchange={handleComboChange} options={addresses}></lightning-combobox>
+        </lightning-layout-item>
+        <lightning-layout-item size="4" style="padding-right: 2%;">
+            <lightning-combobox placeholder = "All NPI Taxos" value={selectedNpi} data-op="npi" onchange={handleComboChange} options={npiOptions}></lightning-combobox>
+        </lightning-layout-item>
+        <lightning-layout-item size="4" style="padding-right: 2%;">
+            <lightning-combobox placeholder = "All Counties" value={selectedCounty} data-op="County" onchange={handleComboChange} options={countyOptions}></lightning-combobox>
+        </lightning-layout-item>
+        <!--Fifth Row-->
+        <lightning-layout-item size="4" style="padding-right: 2%;">
+            <br>
+            <button onclick={handleGetLeads} class="slds-button slds-button_brand" type="button" style="width: 100%;">
+                Get Leads Counts</button>
+        </lightning-layout-item>
+    </lightning-layout>
+    <template if:true={showRecords}>
+        <!-- Snowflake Records -->
+        <lightning-card title="Open Position Records">
+            <template if:true={sfDataShow}>
+                <lightning-layout style="padding-bottom: 2%;">
+                    <lightning-layout-item size="3">
+                        <p>
+                            Total Record Count: {totalRecs}
+                        </p>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="6"></lightning-layout-item>
+                    <lightning-layout-item size="3">
+                        <lightning-combobox
+                            variant="label-hidden"
+                            options={options}
+                            value={nRecs}
+                            onchange={handleRecsChange} ></lightning-combobox>
+                    </lightning-layout-item>
+                </lightning-layout>
+                <div slot="actions">
+                    <a target="_self" class="slds-button" download="Snowflake.csv" href={hrefdata} onclick={exportToCSV} >
+                        <lightning-button onclick={exportToCSV} label="Export"></lightning-button>
+                    </a>
+                    <a target="_self" class="slds-button" download="Snowflake.csv" href={hrefdata} onclick={exportToCSVAll} >
+                        <lightning-button onclick={exportToCSVAll} label="Export All"></lightning-button>
+                    </a>  
+                    <!-- <lightning-button variant="brand" label="Export" onclick={exportToXls}></lightning-button> -->
+                </div>
+                <!-- <a target="_self" class="slds-button" download="Snowflake.csv" href={hrefdata} onclick={exportToCSV} >
+                    Download Excel
+                </a>   -->
+                <lightning-datatable
+                key-field="id"
+                data={data}
+                columns={columns}
+                hide-checkbox-column="true">
+                </lightning-datatable>
+                <lightning-layout style="margin-top: 3%;">
+                    <lightning-layout-item size="3">
+                    </lightning-layout-item>
+                    <!--Paginatoin-->
+                    <lightning-layout-item size="6">
+                        <lightning-layout>
+                            <lightning-layout-item>
+                                <lightning-button label="Previous" 
+                                icon-name="utility:chevronleft"
+                                onclick={previousHandler}
+                                disabled={disablePrevious}></lightning-button>
+                            </lightning-layout-item>
+                            <lightning-layout-item flexibility="grow">
+                                <p class="slds-text-align_center">{currentPage} of {totalPage}</p>
+                            </lightning-layout-item>
+                            <lightning-layout-item>
+                                <lightning-button label="next" 
+                                icon-name="utility:chevronright"
+                                icon-position="right"
+                                onclick={nextHandler}
+                                disabled={disableNext}></lightning-button>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </lightning-layout-item>
+                    <!--Paginatoin-->
+                    <lightning-layout-item size="3"></lightning-layout-item>
+                </lightning-layout>
+            </template>
+            <template if:false={sfDataShow}>
+                <p style="text-align: center; font-weight: bold; font-size: 15px;">There are no records</p>
+            </template>
+        </lightning-card>
+    </template>
+</template>

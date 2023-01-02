@@ -1,0 +1,2 @@
+<apex:page standardController="Quote" extensions="GenerateQBInvoiceCls" action="{!createQBUser}">
+</apex:page>

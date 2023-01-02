@@ -1,0 +1,31 @@
+.THIS .spins::after {
+    position: absolute;
+    content: 'Loan Lead is Converting! Please wait...';
+    width: 100%;
+    text-align: center;
+    top: calc(50% + 3em);
+    font-weight: bold;
+}
+
+.THIS .test input {
+ 	-webkit-text-security: disc !important;
+}
+.THIS .showSpinner{
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+
+
+.THIS .callLeadInqCmpOne {
+    height:100px;
+    width: 100%;
+}
+
+.THIS .callLeadInqCmpTwo {
+    padding: 18px;
+}
+
+.THIS .callLeadInqCmpThree {
+    display:none
+}
